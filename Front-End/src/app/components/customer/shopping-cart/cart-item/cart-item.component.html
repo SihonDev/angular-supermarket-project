@@ -1,0 +1,16 @@
+<td>
+  <div class="item-name">{{item.productName | titlecase}}<img class="inner-img" src="{{this.url}}{{item.pictureRoute}}" /></div>
+</td>
+<td class="item-price">Price {{ item.price | currency:'USD'}} <span>
+    <div class="flex">
+      <button (click)="increaseQuantity(item)">+</button>
+      <button (click)="decreaseQuantity(item)">-</button>
+      <input [disabled]="true" class="quantityBtn" type="number" min="1" max="100" [(ngModel)]='item.quantityForUpdate'>
+    </div>
+  </span><span>Subtotal {{item.total | currency:'USD'}}</span>
+<td class="remove-item">
+  <p>Remove Item</p>
+  <div><button class="remove-btn" (click)="removeProduct()"><i class="fa fa-trash-o"></i>
+      <span class="glyphicon glyphicon-trash"></span>
+    </button></div>
+</td>

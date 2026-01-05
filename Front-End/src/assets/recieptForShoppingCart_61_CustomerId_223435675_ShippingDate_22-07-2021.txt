@@ -1,0 +1,11 @@
+Reciept for customer: mike tyson , id: 223435675
+
+Shipping Details:
+City: Tel-Aviv, Street: gefen street 26, Shipping date: 22-07-2021
+
+Products lists: 
+Product Name: Yogurt, Quantity: 2, Price per unit/kg: 2, Total price of product 4 NIS
+Product Name: Fairvalley, Quantity: 1, Price per unit/kg: 10, Total price of product 10 NIS
+Product Name: Ricotta, Quantity: 7, Price per unit/kg: 2, Total price of product 14 NIS
+
+Total price of all products: 28.00 NIS

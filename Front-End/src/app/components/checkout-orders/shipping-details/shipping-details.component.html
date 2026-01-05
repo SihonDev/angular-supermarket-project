@@ -1,0 +1,47 @@
+<div class="container">
+  <h3>Shipping Details</h3>
+  <form #shippingForm="ngForm" [formGroup]="orderForm" [ngClass]="{ 'checkVisa': creditCard.invalid}">
+    <div class="input-group form-group">
+      <select class="form-control" [formControl]="city" (click)="getCityNameFromServer()">
+        <option value="" disabled selected>City (required)</option>
+        <option *ngFor="let city of listOfCities" value="{{city.id}}">
+          {{city.name}}
+        </option>
+      </select>
+    </div>
+    <p class="list-group-item list-group-item-warning" *ngIf="city.errors?.required &&city.touched">Select your city</p>
+
+    <div class="input-group form-group">
+      <input type="text" class="form-control" placeholder="Street name (required)" [formControl]="street"
+        (click)="getStreetNameFromServer()">
+    </div>
+    <p class="list-group-item list-group-item-warning" *ngIf="street.errors?.required&& street.touched ">Type a street
+      name</p>
+
+    <div class="input-group form-group">
+      <input id="futureDate" type="date" (click)="getShipppingDate()" [formControl]="shippingDate"
+        dateFormat="dd/mm/yy">
+    </div>
+
+    <div>
+      <input id="ccnumber" type="number" pattern="\d*" class="form-control" placeholder="Credit Card (required)"
+        [formControl]="creditCard">
+    </div>
+    <p class="list-group-item list-group-item-warning"
+      *ngIf="orderForm.get('creditCard').invalid && creditCard.touched || !this.checkVisaCardBoolean">VisaCard input
+      should be 13 or 16 digits long and <span class="ccNotice">start with number 4</span></p>
+    <p class="list-group-item list-group-item-warning"
+      *ngIf="orderForm.get('creditCard').invalid && creditCard.touched || !this.checkMasterCardBoolean">MasterCard
+      should be 16 digits, <span class="ccNotice">start with 51-55</span> or four digits number that range from
+      2221-2720,
+      other digits range 0-9</p>
+    <p class="list-group-item list-group-item-warning"
+      *ngIf="orderForm.get('creditCard').invalid && creditCard.touched || !this.checkAmericanExpressBoolean">
+      American Express should <span class="ccNotice">start with numbers 34/37</span> and have 15 digits</p>
+
+    <div class="form-group">
+      <button id="total-price" class="btn btn-primary" id="formButton2" (click)="order()"
+        [disabled]="shippingForm.form.invalid">Submit Order</button>
+    </div>
+  </form>
+</div>

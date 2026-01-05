@@ -1,0 +1,26 @@
+<form #registrationFormTwo="ngForm" [formGroup]="registrationForm">
+  <p class="step-form">Step 2</p>
+  <div class="select-option">
+    <select class="form-control" placeholder="Choose a city (required)" [formControl]="city">
+      <option value="" disabled selected>Select a city (required)</option>
+      <option *ngFor="let city of listOfCities" value="{{city.id}}">
+        {{city.name}}
+      </option>
+    </select>
+    <p class="list-group-item list-group-item-warning" *ngIf="city.errors?.required &&city.touched">Cannot not be empty</p>
+  </div>
+  <input type="text" class="form-control" placeholder="Street name (required)" [formControl]="street">
+  <p class="list-group-item list-group-item-warning" *ngIf="street.errors?.required&& street.touched ">Cannot not be empty</p>
+  <input type="text" class="form-control" placeholder="First name (required)" [formControl]="firstName">
+  <p class="list-group-item list-group-item-warning" *ngIf="firstName.errors?.required&& firstName.touched ">Cannot not be empty</p>
+  <p class="list-group-item list-group-item-warning" *ngIf="firstName.errors?.pattern && firstName.touched">Use only letters</p>
+  <input type="text" class="form-control" placeholder="Last name (required)" [formControl]="lastName">
+  <p class="list-group-item list-group-item-warning" *ngIf="lastName.errors?.required&& lastName.touched ">Cannot not be empty</p>
+  <p class="list-group-item list-group-item-warning" *ngIf="lastName.errors?.pattern && lastName.touched">Use only letters</p>
+  <button id="formButton2" (click)="register()"
+    [disabled]="registrationFormTwo.form.invalid||this.disableButton">Register</button>
+  <div>
+    <input type="button" value="Back to step 1" class="btn register-button btn-secondary" (click)="goBackToStepOne()"
+      [disabled]="this.disableButton">
+  </div>
+</form>

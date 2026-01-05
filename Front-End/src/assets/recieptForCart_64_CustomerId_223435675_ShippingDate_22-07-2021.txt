@@ -1,0 +1,11 @@
+Reciept for customer: mike tyson , id: 223435675
+
+Shipping Details:
+City: Tel-Aviv, Street: gefen street 26, Shipping date: 22-07-2021
+
+Products lists: 
+Product Name: Skim Milk, Quantity: 1, Price per unit/kg: 4, Total price of product 4 NIS
+Product Name: Mozzarella, Quantity: 2, Price per unit/kg: 4, Total price of product 8 NIS
+Product Name: Milk, Quantity: 1, Price per unit/kg: 3, Total price of product 3 NIS
+
+Total price of all products: 15.00 NIS

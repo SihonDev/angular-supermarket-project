@@ -1,0 +1,42 @@
+<span class="add-icon-text" *ngIf='!openSection'><i class="fas fa-plus-circle"
+    (click)='displayTextAccordingAction()'></i>&nbsp;{{buttonTextAccordingAction}}</span>
+<span class="add-icon-text" *ngIf='openSection'><i class="fas fa-times-circle"
+    (click)='displayTextAccordingAction()'></i>&nbsp;{{buttonTextAccordingAction}}</span>
+
+<div class="itemContainer" *ngIf='openSection'>
+  <form #addProductForm="ngForm">
+
+    <div class="input-group form-group">
+      <input type="text" class="form-control" placeholder="Product Name (required)" name="productName" id="productName"
+        [(ngModel)]="this.productName">
+    </div>
+
+    <div class="input-group form-group">
+      <input type="number" class="form-control" placeholder="Product id (determined automatially)" id="productId"
+        name="productId" [(ngModel)]="this.productId" disabled=true>
+    </div>
+
+    <div class="input-group form-group">
+      <input type="number" class="form-control" placeholder="Product price in NIS (required)" id="productPrice"
+        name="productPrice" [(ngModel)]="this.productPrice" step='.01'>
+    </div>
+
+    <div class="input-group form-group">
+      <select class="form-control" placeholder="Choose a category (required)" name="productCategory"
+        [(ngModel)]="this.category">
+        <option value="" disabled selected>Choose a category</option>
+        <option *ngFor="let category of listOfCategories" value="{{category.id}}">
+          {{category.name}}
+        </option>
+      </select>
+    </div>
+
+    <label class="form-label" for="customFile">Select Image</label>
+    <input type="file" class="form-control" id="customFile" (change)="onSelectFile($event)" *ngIf='showUploader' />
+    <div class="file-section">
+      <img [src]="this.urlToShow">
+      <input id="files" type="file" (change)="onSelectFile($event)" *ngIf='showUploader' style="visibility:hidden;">
+      <button class="btn btn-primary" (click)="saveProductInDB()">Save</button>
+    </div>
+
+  </form>

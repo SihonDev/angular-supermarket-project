@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="menu-container">
+  <app-menu></app-menu>
+  <div class="search-section">
+    <app-search (passSearchedProducs)='displayInputSearchedTextProduct($event)'></app-search>
+  </div>
+</div>
+
+<section class="body-container">
+  <div  class="cart-section">
+    <app-add-product (displayUpdatedProduct)='sendMessageRecievedFromAdminCartItemToAdminLayoutComponent($event)'
+      [getProductToUpdate]='sharedProductDetails'>
+    </app-add-product>
+  </div>
+
+  <div class="product-section">
+    <app-products [getAddedOrUpdatedProductDetailsByAdmin]='currentItem'
+      (shareProductDetails)='displayProductDetails($event)' [productListByCategory]="displayFoundProducts">
+    </app-products>
+  </div>
+</section>
+<app-footer></app-footer>

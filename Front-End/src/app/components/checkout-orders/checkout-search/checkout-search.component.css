@@ -1,0 +1,17 @@
+.container {
+    background-color: #efede9!important;
+}
+
+.resetButton{
+    margin-left:5px!important;
+    margin-right:5px!important;
+    color: #5bc0de;
+}
+
+.input-group{
+    margin-top:5px;
+}
+
+.fa-search {
+    color: #5bc0de;
+}

@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="top-card">
+        <img class="inner-img" src="{{this.url}}{{item.pictureRoute}}" alt="">
+    </div>
+    <div class="mid-card">
+        <p class="product-name">{{item.productName | titlecase}}</p>
+        <div class="bottom-card">
+            <div class="product-price">{{item.price | currency:'USD'}}</div>
+        </div>
+    </div>
+</div>

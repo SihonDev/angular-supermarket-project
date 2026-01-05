@@ -1,0 +1,22 @@
+<app-header [firstName]="firstName" [isLoggedIn]="isLoggedIn"
+(logoutMessageToParent)='sendLogoutMesageToChild($event)'></app-header>
+<section class="columns">
+    <div class="column">
+        <app-start-shopping *ngIf='isLoggedIn' [greetingTextAccordingToSession]='greetingTextAccordingToSession'>
+        </app-start-shopping>
+        <app-login *ngIf='!isLoggedIn' (passDataToParentComponent)='shareDataWithSiblings($event)'></app-login>
+    </div>
+    <div class="column">
+        <app-about></app-about>
+    </div>
+    <div class="column">
+        <app-summery [firstName]="firstName" [isLoggedIn]="isLoggedIn"
+            [getCartNotifications]='getCartNotifications' [getOrderNotifications]="getOrderNotifications"
+            [lastDateOfShoppingCartValue]='lastDateOfShoppingCartValue'
+            [totalPriceOfOpenedCartValue]='totalPriceOfOpenedCartValue' [lastDateOfOrderValue]='lastDateOfOrderValue'>
+        </app-summery>
+    </div>
+</section>
+<div class="column">
+<app-footer></app-footer>
+</div>

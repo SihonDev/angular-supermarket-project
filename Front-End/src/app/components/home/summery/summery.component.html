@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Online Shopping Store Activity</h2>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-primary">
+        Number of products in Stock:
+        <span class="badge badge-danger">{{numberOfProductsLeftInStock}}</span>
+      </li>
+      <li class="list-group-item list-group-item-primary">
+        Number of submitted orders in store:
+        <span class="badge badge-danger">{{numberOfSubmittedOrders}}</span>
+      </li>
+    </ul>
+    <br>
+    <h4>Notifications </h4>
+    <h5 *ngIf='isLoggedIn'>Hello {{firstName | titlecase}}, This is your store activity</h5>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-warning" *ngIf='!isLoggedIn'>
+        Please login/Register to view notifications
+      </li>
+      <li class="list-group-item list-group-item-primary" *ngIf='getCartNotifications'>
+        You have an open cart created on :
+        <span class="badge badge-danger">{{lastDateOfShoppingCartValue}}</span>
+      </li>
+      <li class="list-group-item list-group-item-primary" *ngIf='getCartNotifications'>
+        Total price of your open cart is :
+        <span class="badge badge-danger">{{totalPriceOfOpenedCartValue | currency:USD}}</span>
+      </li>
+      <li class="list-group-item list-group-item-primary" *ngIf='getOrderNotifications'>
+        Your last purchase was on date :
+        <span class="badge badge-danger">{{lastDateOfOrderValue}}</span>
+      </li>
+    </ul>
+</div>

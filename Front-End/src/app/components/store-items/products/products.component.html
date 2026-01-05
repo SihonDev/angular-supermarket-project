@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="product-card" *ngFor="let item of productListByCategory">
+    <app-product-item name="item" [item]='item' (click)=[(passProductDetails(item))] data-toggle="modal"
+      data-target="#productModal">
+    </app-product-item>
+  </div>
+</div>
+
+
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-item">
+                  <h5>{{displayProductDetailsOnModal.productName | titlecase}}</h5>
+                  <img class="inner-img" src={{this.url}}{{displayProductDetailsOnModal.pictureRoute}}
+                    alt="Card image cap" *ngIf='showPicAfterClick'>
+                </div>
+              </td>
+              <td>{{displayProductDetailsOnModal.price | currency:'USD'}}</td>
+              <td>
+                <div class="product-quantity">
+                  <button class="quantity-btn" (click)="increaseQuantity()">+</button>
+                  <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
+                  <input [disabled]="true" class="quantity-input" type="number" min="1" max="100"
+                    [(ngModel)]="productQuantity">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="addOrUpdateProductQuantityOnCart()">{{customModalTextButton}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container" *ngIf="productListByCategory.length === 0">
+  <div class="noProductFound">
+    <img src="../../../../assets/images/noProductFound.jpg" alt="Third slide">
+  </div>
+</div> -->

@@ -1,0 +1,17 @@
+img{ 
+    margin:auto;
+  }
+    
+  #carouselExampleIndicators {
+    padding-top: 20px;
+  }
+    
+  .carousel-control-next-icon{
+    background-color:#108d6f;
+  }
+    
+  .carousel-control-prev-icon {
+    background-color:#108d6f;
+  }
+    
+    

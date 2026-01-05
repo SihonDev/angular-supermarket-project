@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search Product" [(ngModel)]='this.inputSearchText'>
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button" (click)='sendSearchedProductQuery()'>
+        <i class="fa fa-search"></i>
+      </button>
+      <button class="btn btn-secondary resetButton" type="button" (click)='reset()'>
+        Reset Search
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<button *ngIf="cartsArray.length !== 0" class="btn btn-danger" (click)="deleteMyCart()">Delete my cart</button>
+<div class="container">
+  <div class="item-section" *ngIf="cartsArray.length === 0" class="alert alert-info">Your Cart is Empty.</div>
+  <div class="sticky" *ngIf="cartsArray.length !== 0">
+    <button class="btn btn-primary" (click)='order()'>Total price of your cart is {{ cartTotalPrice() |
+      currency:'USD'}} Checkout Now</button>
+  </div>
+  <table class="show-cart table">
+    <tr *ngFor="let item of cartsArray">
+      <app-cart-item name="item" value="item.id" [item]='item' (productToRemove)="removeAnItemFromCart($event)">
+      </app-cart-item>
+    </tr>
+  </table>
+</div>

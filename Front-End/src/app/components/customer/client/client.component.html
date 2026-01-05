@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="menu-container">
+  <app-menu></app-menu>
+  <div class="search-section">
+    <app-search (passSearchedProducs)='displayInputSearchedTextProduct($event)'></app-search>
+  </div>
+</div>
+<button id="hideCart" class="btn btn-warning" (click)="hideCart()">Close Cart</button>
+<button id="viewCart" class="btn btn-warning" (click)="viewCart()">View Cart</button>
+<section class="body-container">
+  <div class="product-section">
+    <app-products [productListByCategory]="searchedProduct"
+      (passAddedOrUpdatedProductDetails)="passProductChangingDetails($event)"> </app-products>
+  </div>
+  <div class="cart-section">
+    <app-cart [overwriteProductDetailsOnCartItem]='displayProductChangingDetails'></app-cart>
+  </div>
+</section>
+<app-footer></app-footer>

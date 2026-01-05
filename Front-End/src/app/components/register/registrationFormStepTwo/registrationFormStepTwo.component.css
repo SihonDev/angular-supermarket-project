@@ -1,0 +1,22 @@
+.step-form {
+  text-align: center;
+  font-weight: 600;
+  color:#292b2c;
+}
+
+button {
+  background-color: #5bc0de;
+  color: white;
+  margin: 8px 0 18px;
+  border: none;
+  width: 100%;
+}
+
+.select-option {
+  padding-bottom: 15px;
+}
+
+[disabled] {
+  pointer-events: none;
+  cursor: not-allowed;
+}

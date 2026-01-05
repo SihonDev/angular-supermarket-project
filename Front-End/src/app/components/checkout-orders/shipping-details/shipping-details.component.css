@@ -1,0 +1,14 @@
+.container {
+  padding-top: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ccNotice {
+  color: #d9534f;
+  font-weight: bold;
+}

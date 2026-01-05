@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <button id="toggel" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" *ngIf="!userIsAdmin">
+    <div class="navbar-nav" id="menu">
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[0].state}}" id="home-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(1)' routerLink="/shop"  role="tab" aria-controls="home"
+        aria-selected="true">Milk & Eggs</a>
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[1].state}}" id="profile-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(2)' routerLink="/shop"  role="tab" aria-controls="profile"
+        aria-selected="false">Vegetables
+        & Fruits</a>
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[2].state}}" id="contact-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(3)' routerLink="/shop"  role="tab" aria-controls="contact"
+        aria-selected="false">Meat &
+        Fish</a>
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[3].state}}" id="contact-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(4)' routerLink="/shop"  role="tab" aria-controls="contact"
+        aria-selected="false">Wine &
+        Drinks</a>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" *ngIf="userIsAdmin">
+    <div class="navbar-nav" id="menu">
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[0].state}}" id="home-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(1)' routerLink="/admin"  role="tab" aria-controls="home"
+        aria-selected="true">Milk & Eggs</a>
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[1].state}}" id="profile-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(2)' routerLink="/admin"  role="tab" aria-controls="profile"
+        aria-selected="false">Vegetables
+        & Fruits</a>
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[2].state}}" id="contact-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(3)' routerLink="/admin"  role="tab" aria-controls="contact"
+        aria-selected="false">Meat &
+        Fish</a>
+
+      <a class="nav-item nav-link {{this.categoriesOfProducts[3].state}}" id="contact-tab" data-toggle="tab"
+        (click)='displayProductsByCategory(4)' routerLink="/admin"  role="tab" aria-controls="contact"
+        aria-selected="false">Wine &
+        Drinks</a>
+
+    </div>
+  </div>
+</nav>
+
+

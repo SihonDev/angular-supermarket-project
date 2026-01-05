@@ -1,0 +1,35 @@
+<div class="header">
+    <nav class="navbar navbar-dark bg-dark">
+
+        <div class="logo">
+            <h1>Sihon<span class="logo-m">M</span><span><img src="../../../favicon.ico" alt="logo"></span>rket</h1>
+        </div>
+
+        <form class="form-inline">
+            <div>
+                <Button *ngIf='isLoggedIn' id="userGreating" class="btn btn-info btn-md mr-2">
+                    <i class="fas fa-user"></i> Hello {{firstName | titlecase}}
+                </Button>
+                <Button *ngIf='!isLoggedIn'id="userGreating" class="btn btn-info btn-md mr-2">
+                    <i class="fas fa-user"></i> Hello Guest
+                </Button>
+
+                <Button class="btn btn-info btn-md mr-2">
+                    <a href="tel:+972-05-686-5488">
+                        <i class="fas fa-phone"></i>
+                        +972-50-686-5488</a>
+                </Button>
+
+                <Button class="btn btn-info btn-md mr-2">
+                    <a href="mailto:sihon@market.com">
+                        <i class="fas fa-envelope"> </i>
+                        sihon@market.com</a>
+                </Button>
+
+                <Button *ngIf='isLoggedIn' class="btn btn-info btn-md mr-2" (click)="logout()">
+                    Sign Out <i class="fas fa-sign-out-alt"></i>
+                </Button>
+            </div>
+        </form>
+    </nav>
+</div>

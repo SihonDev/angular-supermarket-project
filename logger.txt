@@ -1,0 +1,9 @@
+ADMIN 
+
+user: sihon@mail.com
+password: 12345
+
+CLIENT
+
+user: mike@mail.com
+password: 12345

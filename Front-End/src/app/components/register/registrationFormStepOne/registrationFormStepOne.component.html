@@ -1,0 +1,22 @@
+<form #registrationFormOne="ngForm" [formGroup]="registrationForm">
+    <div>
+      <p class="step-form">Step 1</p>
+      <input type="text" class="form-control" placeholder="ID (required)" [formControl]="id">
+      <p class="list-group-item list-group-item-warning" *ngIf="id.errors?.required && id.touched">Cannot not be empty</p>
+      <p class="list-group-item list-group-item-warning" *ngIf="id.errors?.pattern">Id number must have 9 digits</p>
+      <input type="text" class="form-control" placeholder="E-Mail (required)" [formControl]="email">
+      <p class="list-group-item list-group-item-warning" *ngIf="email.errors?.required && email.touched">Cannot not be empty</p>
+      <p class="list-group-item list-group-item-warning" *ngIf="email.errors?.pattern">Email should be in this format: supermarket@mail.com</p>
+      <input type="password" class="form-control" placeholder="Password (required)" [formControl]="password" name="password">
+      <p class="list-group-item list-group-item-warning" *ngIf="password.errors?.required && password.touched">Cannot not be empty</p>
+      <p class="list-group-item list-group-item-warning" *ngIf="password.errors?.pattern">Passwords must be at least 5 characters in length (only numerical and alphabetical charachters(a-zA-Z))</p>
+      <input type="password" class="form-control" placeholder="Password confirmation (required)"
+        [formControl]="passwordConfirmation">
+      <p class="list-group-item list-group-item-danger" *ngIf="passwordConfirmation.hasError('checkIfPasswordIsEqual')">password and its confirmation should match</p>
+      <button (click)="continueToStepTwo()"
+        [disabled]="registrationFormOne.form.invalid || this.disableButton">Next</button>
+        <div>
+          <input type="button" value="Back to Login page" class="btn btn-secondary" (click)="backToLoginPage()">
+        </div>
+    </div>
+</form>

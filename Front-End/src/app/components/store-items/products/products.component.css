@@ -1,0 +1,65 @@
+.container {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.product-card {
+  margin: auto;
+  height: 260px;
+  width: 250px;
+  box-shadow: 10px 10px 10px #a1a1a1;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.inner-img {
+  transition: 0.3s;
+}
+
+.inner-img:hover {
+  transform: scale(1.1);
+}
+
+/* Modal css Styles */
+
+.product-item {
+  padding-right: 20px;
+  max-width: 100px;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
+.product-quantity {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.quantity-btn {
+  background-color: #555;
+  border: solid 2px #555;
+  color: #fff;
+  cursor: pointer;
+  height: 2rem;
+  line-height: 2;
+  margin-right: 2px;
+  padding: 0;
+  width: 2rem;
+}
+
+.quantity-input {
+  border: solid 2px;
+  color: #777;
+  height: 2rem;
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+.noProductFound {
+  width: 70%;
+  height: 70%;
+}

@@ -1,0 +1,11 @@
+<app-header></app-header>
+<section>
+  <div class="shipping-section">
+    <button class="btn btn-warning" (click)="goBackToShoppingCart()">Go back to shop</button>
+    <app-shipping-details></app-shipping-details>
+  </div>
+  <div class="product-section">
+    <app-checkout-search (passSearchedProducsFromCheckout)="displaySearchedProduct($event)"></app-checkout-search>
+    <app-checkout-cart [getSearchedProduct]="searchedProduct"></app-checkout-cart>
+  </div>
+</section>

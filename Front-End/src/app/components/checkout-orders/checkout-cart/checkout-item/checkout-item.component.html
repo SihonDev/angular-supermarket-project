@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th>Item</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    <tr>
+      <td class="productName">{{item.productName | titlecase}}</td>
+      <td><img class="inner-img" src="{{this.url}}{{item.pictureRoute}}"></td>
+      <td>{{ item.price | currency:'USD'}}</td>
+      <td>{{item.quantityForUpdate}}</td>
+      <td>{{item.total | currency:'USD'}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,18 @@
+.fa-plus-circle {
+  font-size: 36px;
+  color: #5bc0de;
+}
+
+.fa-times-circle{
+  font-size: 36px;
+  color: #CC0000;
+}
+
+.add-icon-text {
+  color: black;
+}
+
+.file-section{
+  width: 120px;
+  height: 120px;
+}

@@ -1,0 +1,32 @@
+.form-inline {
+  margin-bottom: 0px;
+}
+
+.logo h1 {
+  color: white;
+}
+  
+.btn-info {
+  margin-bottom: 0px;
+}
+  
+a {
+  text-decoration: none;
+  color: white;
+}
+  
+.logo-m {
+  color:#5bc0de;
+}
+  
+h5 {
+  color: white;
+}
+
+button {
+  margin: 5px;
+}
+
+#userGreating {
+  pointer-events: none;
+}
