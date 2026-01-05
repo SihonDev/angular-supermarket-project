@@ -1,0 +1,9 @@
+Reciept for customer: az pakado , id: 435645765
+
+Shipping Details:
+City: Rishon Lezion, Street: Yesod HaMa'ala St 24, Shipping date: 28-07-2021
+
+Products lists: 
+Product Name: Parmesan & Romano, Quantity: 1, Price per unit/kg: 3, Total price of product 3 NIS
+
+Total price of all products: 3.00 NIS

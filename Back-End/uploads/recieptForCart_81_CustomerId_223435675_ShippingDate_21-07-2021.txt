@@ -1,0 +1,11 @@
+Reciept for customer: mike tyson , id: 223435675
+
+Shipping Details:
+City: Tel-Aviv, Street: gefen street 26, Shipping date: 21-07-2021
+
+Products lists: 
+Product Name: Parmesan & Romano, Quantity: 2, Price per unit/kg: 2, Total price of product 4 USD
+Product Name: Sour Cream, Quantity: 1, Price per unit/kg: 2, Total price of product 2 USD
+Product Name: Skim Milk, Quantity: 1, Price per unit/kg: 4, Total price of product 4 USD
+
+Total price of all products: 10.00 USD

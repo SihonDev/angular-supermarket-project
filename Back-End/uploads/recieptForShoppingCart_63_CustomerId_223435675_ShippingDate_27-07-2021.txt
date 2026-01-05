@@ -1,0 +1,10 @@
+Reciept for customer: mike tyson , id: 223435675
+
+Shipping Details:
+City: Tel-Aviv, Street: gefen street 26, Shipping date: 27-07-2021
+
+Products lists: 
+Product Name: Parmesan & Romano, Quantity: 3, Price per unit/kg: 2, Total price of product 6 NIS
+Product Name: Margarine Bowl, Quantity: 2, Price per unit/kg: 4, Total price of product 8 NIS
+
+Total price of all products: 14.00 NIS
