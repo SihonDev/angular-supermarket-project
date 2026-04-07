@@ -21,6 +21,7 @@ async function getUserStoreActivity(request) {
     }
     return [getLastDateOfCartResponseServer, getlastdateOfOrderServerResponse, totalPrice];
   } else {
+    console.warn(`[LOGIC_WARN] Unauthorized activity check attempt | User details missing in cache`);
     throw new ServerError(ErrorType.GENERAL_ERROR);
   }
 }
@@ -32,9 +33,13 @@ async function getUserCartItems(request) {
     let customerRelevantInfo = await usersLogic.getUserId(customerInfo)
     let cartRelevantInfo = await cartsDao.getIdOfOpenedCart(customerRelevantInfo);
     let cartProducts = await cartsDao.getUserCartItems(customerRelevantInfo);
+    
+    console.log(`[LOGIC_EVENT] Fetching cart items | UserID: ${customerRelevantInfo[0].id}`);
+    
     let totalInfoOfCart = [cartProducts, cartRelevantInfo];
     return totalInfoOfCart
   } else {
+    console.warn(`[LOGIC_WARN] Attempt to fetch cart items without valid session`);
     throw new ServerError(ErrorType.GENERAL_ERROR);
   }
 }
@@ -46,9 +51,11 @@ async function updateUserCartDetails(request) {
     let customerRelevantInfo = await usersLogic.getUserId(userDetails)
     let arrayOfOpenedCart = await cartsDao.getIdOfOpenedCart(customerRelevantInfo)
     if (arrayOfOpenedCart.length == 0) {
+      console.log(`[LOGIC_EVENT] Initializing new cart | UserID: ${customerRelevantInfo[0].id}`);
       let updateUserCartDetailsResponseServer = await cartsDao.updateUserCartDetails(customerRelevantInfo);
       return updateUserCartDetailsResponseServer;
     }
+    return arrayOfOpenedCart;
   } else {
     throw new ServerError(ErrorType.GENERAL_ERROR);
   }
@@ -58,6 +65,7 @@ async function updateProductOnCartItems(request) {
   let productDetails = request.body
   let userDetails = await usersLogic.extractUserDataFromCache(request);
   if (userDetails != undefined && userDetails.length > 0) {
+    console.log(`[LOGIC_EVENT] Product quantity update | CartID: ${productDetails.cart_id} | ProductID: ${productDetails.product_id}`);
     let updateProductResponseServer = await cartsDao.updateProductOnCartItems(productDetails);
     return updateProductResponseServer;
   } else {
@@ -69,6 +77,7 @@ async function removeProductFromCartItem(request) {
   let productInfoOfCart = request.body
   let userDetails = await usersLogic.extractUserDataFromCache(request);
   if (userDetails != undefined && userDetails.length > 0) {
+    console.log(`[LOGIC_EVENT] Product removal | User: ${userDetails[0].id} | ProductID: ${productInfoOfCart.product_id}`);
     let deleteServerResponse = await cartsDao.removeProductFromCartItem(productInfoOfCart);
     return deleteServerResponse;
   } else {
@@ -80,6 +89,7 @@ async function deleteMyCartFromDB(request) {
   let cartInfo = request.body
   let userDetails = await usersLogic.extractUserDataFromCache(request);
   if (userDetails != undefined && userDetails.length > 0) {
+    console.log(`[LOGIC_EVENT] Full cart clear | CartID: ${cartInfo.cart_id} | User: ${userDetails[0].id}`);
     let deleteServerResponse = await cartsDao.deleteItemsInCart(cartInfo);
     return deleteServerResponse;
   } else {
@@ -93,9 +103,11 @@ async function addOrUpdateProductToCart(request) {
   if (userDetails != undefined && userDetails.length > 0) {
     let doWeHaveThisItemAlready = await cartsDao.doWeHaveThisItemAlready(cartInfo);
     if (doWeHaveThisItemAlready == false) {
+      console.log(`[LOGIC_EVENT] Adding new item to cart | CartID: ${cartInfo[1][0].id}`);
       let addOrUpdateProductToCartServerResponse = await cartsDao.addThisItemToCart(cartInfo);
       return addOrUpdateProductToCartServerResponse;
     } else {
+      console.log(`[LOGIC_EVENT] Updating existing item in cart | CartID: ${cartInfo[1][0].id}`);
       let addOrUpdateProductToCartServerResponse = await cartsDao.updateThisItemInCart(cartInfo);
       return addOrUpdateProductToCartServerResponse;
     }

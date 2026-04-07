@@ -9,19 +9,27 @@ const expressServer = express();
 
 const fs = require("fs");
 const fileUpload = require("express-fileupload");
-const cors = require('cors'); // העברתי את ה-require ללמעלה לסדר טוב יותר
+const cors = require('cors');
 
-// יצירת תיקיית העלאות אם לא קיימת
+// --- שכבת ניטור SIEM (לוגים לספלאנק) ---
+expressServer.use((req, res, next) => {
+    const start = Date.now();
+    res.on('finish', () => {
+        const duration = Date.now() - start;
+        console.log(`[ACCESS_LOG] Method: ${req.method} | Path: ${req.originalUrl} | Status: ${res.statusCode} | IP: ${req.ip} | Duration: ${duration}ms`);
+    });
+    next();
+});
+// --------------------------------------
+
 if (!fs.existsSync("./uploads")) { 
     fs.mkdirSync("./uploads");
 }
 
 const port = process.env.PORT || 3001;
 
-// הגדרות Middleware
 expressServer.use(express.json());
 
-// תיקון CORS: מאפשר לכל מקור (Dynamic IP) לגשת עם Credentials
 expressServer.use(cors({
     origin: true, 
     credentials: true
@@ -30,14 +38,11 @@ expressServer.use(cors({
 expressServer.use(fileUpload());
 expressServer.use(express.static('./uploads'));
 
-// הגדרת Routes
 expressServer.use("/users", usersController);
 expressServer.use("/carts", cartsController);
 expressServer.use("/orders", ordersController);
 expressServer.use("/products", productsController);
 
-// טיפול בשגיאות (חייב להיות בסוף)
 expressServer.use(errorHandler);
 
-// הפעלת השרת על הפורט הנכון
 expressServer.listen(port, () => console.log('Server started on port ' + port));

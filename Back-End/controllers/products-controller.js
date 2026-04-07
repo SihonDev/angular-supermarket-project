@@ -26,8 +26,13 @@ router.post("/addProduct", async (request, response, next) => {
   let productTotalDetails = [productDetails, file, request]
   try {
     let productSuccessfullCreationData = await productsLogic.addProduct(productTotalDetails);
+    
+    // לוג אבטחה: הוספת מוצר חדש למערכת
+    console.log(`[INVENTORY_EVENT] Action: AddProduct | Name: ${productDetails.name} | Price: ${productDetails.price} | Status: Success`);
+    
     response.json(productSuccessfullCreationData);
   } catch (error) {
+    console.error(`[INVENTORY_ERROR] Action: AddProduct | Error: ${error.message}`);
     return next(error);
   }
 });
@@ -38,8 +43,13 @@ router.post("/updateProduct", async (request, response, next) => {
   let productTotalDetails = [productDetails, file,request]
   try {
     let productSuccessfullUpdate = await productsLogic.updateProduct(productTotalDetails);
+    
+    // לוג אבטחה: עדכון מוצר קיים
+    console.log(`[INVENTORY_EVENT] Action: UpdateProduct | ProductID: ${productDetails.id} | Status: Success`);
+    
     response.json(productSuccessfullUpdate);
   } catch (error) {
+    console.error(`[INVENTORY_ERROR] Action: UpdateProduct | Error: ${error.message}`);
     return next(error);
   }
 });
@@ -48,6 +58,10 @@ router.post("/searchProduct", async (request, response, next) => {
   let productDetails = request.body
   try {
     let productsArray = await productsLogic.searchProduct(productDetails,request);
+    
+    // לוג חיפוש: עוזר לזהות מה לקוחות מחפשים או סריקות אוטומטיות
+    console.log(`[SEARCH_EVENT] Query: ${productDetails.searchString || 'all'} | Results: ${productsArray.length}`);
+    
     response.json(productsArray);
   } catch (error) {
     return next(error);

@@ -1,18 +1,19 @@
 let ErrorType = {
 
-    //General errors
+    // General errors
     GENERAL_ERROR: {
       id: 1,
       httpCode: 600,
       message: "A big fuck up which we'll never tell you of had just happend. And now : A big fat lie....'A general error ....'",
-      isShowStackTrace: true
+      isShowStackTrace: true // יתועד כ-SYSTEM_ERROR ב-Splunk
     },
-    //Login errors
+    
+    // Login errors
     UNAUTHORIZED: {
       id: 2,
       httpCode: 401,
       message: "Login failed, invalid user name or password",
-      isShowStackTrace: false
+      isShowStackTrace: false // יתועד כ-APP_WARN
     },
     LOGIN_INPUTS_EMPTY: {
       id: 3,
@@ -33,7 +34,7 @@ let ErrorType = {
       isShowStackTrace: false
     },
   
-    //Registration errors
+    // Registration errors
     REGISTER_ID_INNCORRECT_FORMAT: {
       id: 6,
       httpCode: 401,
@@ -93,4 +94,3 @@ let ErrorType = {
   }
   
   module.exports = ErrorType;
-  
